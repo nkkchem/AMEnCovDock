@@ -12,12 +12,32 @@
 #   rm -R docked_proteins/docked
 #   rm docked_proteins/dock.sh
 
+module load python/anaconda3.2019.3
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+conda activate gschnet
+
+ligands="input.csv"
+receptor="6wqf.pdbqt"
+
+# Prepare Config File
+cp $receptor docked_proteins
+cd docked_proteins/
+/bin/bash ../getConfig.sh $(echo $(pwd)"/$receptor")
+cd ..
+
+# Prepare Ligands
+cp $ligands ligand_library/input.csv
+cd ligand_library
+python SMILES_to_pdbqt_files_with_name.py
+cp -r ligands ..
+cd ..
+
 # modify file paths
-### This section is here in case of further automation
+pathToLigands=$(echo $(pwd)"/ligands/*")
 
 # Generate parallel dock commands
 echo "Generating parallel docks"
-/bin/bash ./test.sh
+/bin/bash ./test.sh $pathToLigands
 module load coreutils/8.26
 # make parallel docks executable
 chmod u+x parallel_dock_commands.sh

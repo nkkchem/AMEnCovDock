@@ -1,0 +1,23 @@
+
+################If incase ./test.sh: line 1: /bin/ls: Argument list too long########
+On Linux, the maximum amount of space for command arguments is 1/4th of the amount of available stack space. So, a solution is to increase the amount of space available for the stack.
+
+ulimit -s
+
+ulimit -s 655369
+##################################################### 
+
+
+ ./test.sh ;
+ module load coreutils/8.26
+ ./parallel_dock_commands.sh ;
+ cat docked_proteins/dock_* > docked_proteins/dock.sh ; 
+ rm docked_proteins/dock_*.pdbqt.sh ;
+ sbatch	run.sbatch ;
+
+
+#################To check Results#################
+
+cat docked_proteins/results/run_* > docked_proteins/results/runs
+
+sort -t, -nk2 docked_proteins/results/runs > docked_proteins/scores

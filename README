@@ -2,48 +2,31 @@
 #Automated Computational Modeling Engine for Non Covalent Molecular Dockin
 ########Qvina Automation steps####
 
-1) Preparing ligands to .pdqbt from SMILES string 
-	Inside folder ligand library - 2 files
-	1. SMILES_to_pdbqt_files_with_name.py 
-		Edit line 49 and add the name of the corresponding CSV file
-	2. List of SMILES and corresponding ID in csv format 
-		Column 1 - ID, Column 2 - SMILES (in csv format)
-	
-activate the virtual environment 
-conda activate gschnet 
+Environment:
+Constance
 
-	python SMILES_to_pdbqt_files_with_name.py
+module load python/anaconda3.2019.3
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+conda activate gschnet
 
-This code will convert SMILES into pdbqt, xyz, pdb and mol2
+Required Files:
+	Receptor: pdbqt format
+		modify automate.sh to hold this name
+	Ligands: csv format
+		ID,SMILES
+		modify automate.sh to hold this name
 
-AutoDockVina requires the compounds in pdbqt - which will be in the folder ligands after conversion
-
-copy the folder ligands and its contents to one directory behind
-
-
-2)	modify test.sh to point to ligands in the same directory
 	modify line 14 of dock.sh to point to your copy of qvina
     	VINA="/path/to/qvina/bin/qvina02"
-	modify line 1 of docked_proteins/config.txt so that receptor =/path/to/proteinreceptor.pdbqt
-	modify the rest of the lines as well with the coordinates to where the active site is in the protein receptor. 
-	This is usually something we do using AutoDock Tools.
 
-	proteinreceptor.pdbqt should be inside docked_proteins
 	modify run.sbatch to reflect desired sbatch parameters
 
-3)	./automate.sh
-	This will submit the created job automatically
 
-
-
-4)	Once the run is completed, we can extract the binding affinities and sort them from highest to smallest. 
+ANALYSIS
+Once the run is completed, we can extract the binding affinities and sort them from highest to smallest. 
 	Run these commands in the root directory
 		cat docked_proteins/results/run_* > docked_proteins/results/runs
 		sort -t, -nk2 docked_proteins/results/runs > docked_proteins/scores	
 	docked_proteins/scores will have the list of commands in sorted order with their binding affinities
 	docked_proteins/docked will have the docked compounds in docked format which is same as pdbqt
-
-
-
-
 

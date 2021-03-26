@@ -1,0 +1,11 @@
+receptor = /qfs/projects/MulCME/Darin/testing/AMEnCovDock/docked_proteins/6wqf.pdbqt
+
+center_x =
+center_y =
+center_z =
+
+size_x =
+size_y =
+size_z =
+
+num_modes = 25
