@@ -22,7 +22,7 @@ receptor="6wqf.pdbqt"
 # Prepare Config File
 cp $receptor docked_proteins
 cd docked_proteins/
-/bin/bash ../getConfig.sh $(echo $(pwd)"/$receptor")
+/bin/bash ../getConfig.sh $(echo "$receptor")
 cd ..
 
 # Prepare Ligands
