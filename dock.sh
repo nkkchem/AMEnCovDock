@@ -19,7 +19,7 @@ my_awk=`which awk`
 
 for ligand in "$LIGANDS"; do
    outputfile="$DOCKDIR"/$(basename -- ${ligand%.*}).docked
-   vina="timeout 120s $VINA --ligand $ligand --config $CONFIG --out $outputfile > /dev/null;"
+   vina="timeout 300s $VINA --ligand $ligand --config $CONFIG --out $outputfile > /dev/null;"
    parse="echo \"${ligand},\$($my_grep -m 1 \"REMARK VINA RESULT:\" ${outputfile} | $my_awk '{ print \$4 }')\" >>  ${RESULTS}/run_\$LAUNCHER_TSK_ID "
    #parse="echo \"$( basename ${outputfile} .docked ),\$($my_grep -m 1 \"REMARK VINA RESULT:\" ${outputfile} | $my_awk '{ print \$4 }')\" >>  ${RESULTS}/run_\$LAUNCHER_TSK_ID "
    echo "$vina $parse"
