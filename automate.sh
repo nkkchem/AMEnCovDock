@@ -4,7 +4,7 @@
 #    must have cloned https://github.com/QVina/qvina
 #    modify dock.sh
 #        VINA="/path/to/cloned/qvina/bin/qvina02"
-#    
+#
 
 # To clean up
 #   rm parallel_dock_commands.sh
@@ -12,9 +12,9 @@
 #   rm -R docked_proteins/docked
 #   rm docked_proteins/dock.sh
 
-module load python/anaconda3.2019.3
-source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
-conda activate gschnet
+#module load python/anaconda3.2019.3
+#source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+#conda activate gschnet
 
 ligands="input.csv"
 receptor="6wqf.pdbqt"
@@ -22,7 +22,7 @@ receptor="6wqf.pdbqt"
 # Prepare Config File
 cp $receptor docked_proteins
 cd docked_proteins/
-/bin/bash ../getConfig.sh $(echo "$receptor")
+/bin/bash ../getConfig.sh $(echo $(pwd)"/$receptor")
 cd ..
 
 # Prepare Ligands
@@ -33,7 +33,7 @@ cp -r ligands ..
 cd ..
 
 # modify file paths
-pathToLigands=$(echo $(pwd)"/ligands/*")
+pathToLigands=$(echo "ligands")
 
 # Generate parallel dock commands
 echo "Generating parallel docks"
