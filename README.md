@@ -26,7 +26,7 @@ AMEnCovDock (Automated Computational Modeling Engine for Non Covalent Molecular 
 
 
 ## ANALYSIS
-Once the run is completed, the binding affinities are extracted and sorted from highest to smallest. 	
+Once the run is completed, the binding affinities are extracted and sorted from highest to lowest. 	
 
 docked_proteins/scores will have the list of compounds in sorted order with their binding affinities
 docked_proteins/docked contains the docked compounds with the .docked extension which is the same as .pdbqt format
