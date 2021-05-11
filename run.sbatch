@@ -10,4 +10,6 @@
 
 ./launcher_constance.sh
 
-
+# Score Results
+cat docked_proteins/results/run_* > docked_proteins/results/runs
+sort -t, -nk2 docked_proteins/results/runs > docked_proteins/scores
