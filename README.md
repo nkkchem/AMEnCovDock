@@ -1,13 +1,16 @@
-# AMEnCovDock
-## Automated Computational Modeling Engine for Non Covalent Molecular Docking
-########Qvina Automation steps####
+# AMEnCovDock: Automated Computational Modeling Engine for Non Covalent Molecular Docking
+
+AMEnCovDock (Automated Computational Modeling Engine for Non Covalent Molecular Docking) is an automated workflow that takes an input protein structure and ligand library to perform molecular docking calculations using QuickVina 2.
+
+## Documentation
+
 
 ## Environment:
 ### Constance
 
-module load python/anaconda3.2019.3
-source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
-conda activate gschnet
+	module load python/anaconda3.2019.3
+	source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+	conda activate gschnet
 
 ## Required Files:
 	Receptor: pdbqt format
