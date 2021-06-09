@@ -20,6 +20,9 @@ ligands="input.csv"
 receptor="6wqf.pdbqt"
 
 # Prepare Config File
+# To have a custom config file:
+#        modify docked_proteins/config.txt
+#        comment out this section
 cp $receptor docked_proteins
 cd docked_proteins/
 /bin/bash ../getConfig.sh $(echo $(pwd)"/$receptor")
